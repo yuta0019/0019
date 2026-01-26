@@ -159,16 +159,11 @@ display:
   # 推送区域开关
   # 控制各区域是否启用（配合 region_order 使用）
   regions:
-    hotlist: true                     # 热榜区域（关键词匹配的热点新闻）
-    new_items: true                   # 新增热点区域（含热榜新增 + RSS 新增）
-                                      # 注：热点词汇统计中的新增标记[表情]不受此配置影响
-
-    rss: true                         # RSS 订阅区域
-                                      # 开启后将对 RSS 进行关键词分析并在通知中展示
-                                      # 关闭后跳过分析，但独立展示区不受影响
-
-    standalone: false                 # 独立展示区（完整热榜/RSS，不受关键词过滤）
-    ai_analysis: true                 # AI 分析区域
+    hotlist: true                     # 保持开启（关键词匹配）
+    new_items: true
+    rss: false
+    standalone: true                  # <--- 修改这里：改为 true
+    ai_analysis: true
 
   # [表情] 独立展示区配置（仅在 regions.standalone: true 时生效）
   # 用途：将指定平台的完整热榜/RSS 单独展示，不受关键词过滤影响
@@ -177,7 +172,7 @@ display:
   #   - RSS 源内容较少，希望全部展示而非只显示关键词匹配的
   # 注意：同一新闻可能同时出现在关键词匹配区和独立展示区
   standalone:
-    platforms: []                     # 热榜平台 ID 列表（如 ["zhihu", "weibo"]）
+    platforms: ["weibo","douyin","bilibili-hot-search","xiaohongshu"]                     # 热榜平台 ID 列表（如 ["zhihu", "weibo"]）
     rss_feeds: []                     # RSS 源 ID 列表（如 ["hacker-news"]）
     max_items: 0                     # 每个源最多展示条数（0=不限制）
 
